@@ -95,5 +95,5 @@ OnVolumeMenu : all
 OnSetVolume
 {
 	volume = reference0
-	"\f[color,disable](Volume set to %(reference0).)\1\s[-1]\![sound,play,sfx\moomba-nya1.wav,--volume=%(volume)]Nyraa!"
+	"\f[color,disable](Volume set to %(reference0).)\0\s[0]\1\s[-1]\![sound,play,sfx\moomba-nya1.wav,--volume=%(volume)]Nyraa!"
 }

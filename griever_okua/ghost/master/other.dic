@@ -89,7 +89,7 @@ On_sakura.portalsites
 portalsites_sakura : array
 {
 	"Okuajub's Netspace";	"https://okuajub-netspace.neocities.org/Ukagaka/"
-	"Griever Github";	"https://link.example.com/link/to/whatever/a/third/time/you/can/add/as/many/as/you/want/"
+	"Griever Github";	"https://github.com/Okuajub/Griever-Ukagaka/"
 }
 
 On_kero.recommendsites

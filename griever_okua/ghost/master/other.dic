@@ -50,7 +50,7 @@ OnWindowStateRestore
 //Tada! That's your url! Make sure you test it! The dev palette and script/network log can help with that
 On_homeurl
 {
-	"https://raw.githubusercontent.com/Okuajub/LOBO-Ukagaka/master/griever-okua/"
+	"https://raw.githubusercontent.com/Okuajub/Griever-Ukagaka/refs/heads/main/griever_okua/"
 }
 
 

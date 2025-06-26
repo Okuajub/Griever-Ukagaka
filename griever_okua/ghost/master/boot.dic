@@ -1,0 +1,55 @@
+OnFirstBoot
+{
+	//If you add variables, make sure to initialize them here!
+	//Note - I haven't added anything about username or pronouns here because it's all handled by the SSP prefs
+	stroke = 0
+	LastTalk = ""
+	volume = 0
+	nekoName = "Griever"
+	
+	"\1\s[-1]\0\s[-1]\*\t\f[color,disable](...This Ghost has optional sound effects. Would you like to enable them?)\n\n\f[color,default]"
+	--
+	"\![*]\q[(Yes.),OnSetVolume,50]\n/
+	\![*]\q[(No.),OnBoot]"
+}
+
+OnInitialize
+{
+	//If you want some variables to reset on boot, put them here. This event will happen even if you add other events like OnGhostChanged
+	//OnInitialize is a NOTIFY event! That means it cannot return scripts. This event is only meant for things like variable changes. See this page on Ukadoc for more info: https://ukagakadreamteam.github.io/ukadoc/manual/spec_shiori3.html
+	
+	//If you add new variables in updates, I recommend initializing them like so:
+	//if !ISVAR("NewVariable"); NewVariable = 0
+	//This means that it will only set the new variable if the user doesn't already have it, so that their variables don't get overwritten
+	
+	if reference0 != "reload" //For things you want to reset EXCEPT when just reloading; a convenience for you the dev, basically
+	{
+		LastTalk = ""
+	}
+}
+
+OnBoot
+{
+	_temp = SHIORI3FW.UserBirthday
+	_user_birthday = "%(_temp[1])/%(_temp[2])" //M/D, if you want it D/M you can switch it around
+	_today = "%(month)/%(day)" //Again, switch this around if using D/M
+	
+	"\1\s[-1]\0\s[0]"
+	--
+	if _today == "8/23" //Squall's birthday
+	{
+		"\0\s[0]\i[10]\![sound,play,sfx\moomba-laguna1.wav]Laguna! \w8\w8\![sound,play,sfx\moomba-laguna2.wav]Laguna! \w8\w8\w8\w4\i[11]\![sound,play,sfx\moomba-meow4.wav]Mr-row!"
+	}
+	else //Normal boot
+	{
+		"\0\s[0]\i[20]\![sound,play,sfx\moomba-short2.wav,--volume=%(volume)]Mee!"
+		"\0\s[0]\![sound,play,sfx\moomba-mrr1.wav,--volume=%(volume)]Mrrr!"
+	}
+}
+
+OnClose
+{
+	"\0\s[0]\i[10]\![sound,play,sfx\moomba-meow3.wav,--volume=%(volume)]Rraa!"
+	--
+	"\w8\w8\-" //This is what makes the ghost close (after a short pause), do not remove the \- , and MAKE SURE you don't use a \e before this point or it won't work
+}

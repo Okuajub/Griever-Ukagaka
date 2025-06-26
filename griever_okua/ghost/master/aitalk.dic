@@ -1,0 +1,29 @@
+OnAiTalk
+{
+	if CHAIN.IDName != ""
+	{
+		LastTalk = ChainTalk
+	}
+	else
+	{
+		LastTalk = RandomTalk
+	}
+	LastTalk
+}
+
+RandomTalk : nonoverlap_pool
+{
+	"\0\s[0]\![sound,play,sfx\moomba-mrr1.wav,--volume=%(volume)]Mrrr!"
+	"\0\s[0]\![sound,play,sfx\moomba-long1.wav,--volume=%(volume)]Mee!\w4 Mwrr."
+	"\0\s[0]\![sound,play,sfx\moomba-short3.wav,--volume=%(volume)]Meew."
+	"\0\s[0]\![sound,play,sfx\moomba-longest1.wav,--volume=%(volume)]Mee!\w4 Mwrr.\w6\w8 Rr..."
+	//"\0\s[0]\![sound,play,sfx\moomba-meow1.wav,--volume=%(volume)]3"
+	//"\0\s[0]\![sound,play,sfx\moomba-meow2.wav,--volume=%(volume)]4"
+	"\0\s[0]\![sound,play,sfx\moomba-meow3.wav,--volume=%(volume)]Rraa!"
+	"\0\s[0]\i[10]\![sound,play,sfx\moomba-meow4.wav,--volume=%(volume)]Mrrow!\w8\w8\w8\w8\i[11]"
+	"\0\s[0]\i[10]\i[20]\![sound,play,sfx\moomba-meowlong1.wav,--volume=%(volume)]Rr\w4ya\w6\w4-raa!\w8\w8\w8\i[11]"
+	"\0\s[0]\i[20]\![sound,play,sfx\moomba-nya1.wav,--volume=%(volume)]Nyraa!"
+	"\0\s[0]\![sound,play,sfx\moomba-short1.wav,--volume=%(volume)]Rry!"
+	"\0\s[0]\![sound,play,sfx\moomba-short2.wav,--volume=%(volume)]Mm!"
+}
+

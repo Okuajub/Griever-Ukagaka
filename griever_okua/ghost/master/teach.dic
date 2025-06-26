@@ -1,0 +1,61 @@
+OnTeachMoomba
+{
+	//Sanitize input
+	_word = reference0
+	_word = TOLOWER(_word)
+	_word = REPLACE(_word," ","")
+	_word = REPLACE(_word,".","")
+	_word = REPLACE(_word,",","")
+	_word = REPLACE(_word,"-","")
+	_word = REPLACE(_word,"'","")
+	_word = REPLACE(_word,'"',"")
+	_word = REPLACE(_word,"\","")
+	_word = REPLACE(_word,"/","")
+
+	"\1\s[-1]..?\w8\w8\w8\n\n"
+	--
+	if _word == "laguna"
+	{
+		"\0\s[0]\i[10]\i[20]\1\s[-1]"
+		--
+		"\![sound,play,sfx\moomba-laguna1.wav,--volume=%(volume)]Laguna!"
+		"\![sound,play,sfx\moomba-laguna2.wav,--volume=%(volume)]Laguna!"
+		--
+		"\w8\w8\0\f[color,disable](...I guess I already knew he could say that.)\i[11]\w8\w4\s[0]"
+	}
+	elseif _word == "squall" || _word == "leon"
+	{
+		"\0\s[0]\i[10]\i[20]\1\s[-1]"
+		--
+		"\![sound,play,sfx\moomba-laguna1.wav,--volume=%(volume)]Laguna!"
+		"\![sound,play,sfx\moomba-laguna2.wav,--volume=%(volume)]Laguna!"
+		--
+		"\w8\w8\0\f[color,disable](...I don't get it.)\i[11]\w8\w4\s[0]"
+	}
+	elseif _word == "rinoa" || _word == "selphie"
+	{
+		"\0\s[0]\i[10]\i[20]\1\s[-1]\![sound,play,sfx\moomba-nya1.wav,--volume=%(volume)]Nyaa!\0\w8\w8\w8\w8\i[11]\w8\w4\s[0]"
+		--
+		"\w8\w8\0\f[color,disable](Guess he knows her, too.)"
+	}
+	elseif _word == "zell" || _word == "irvine" || _word == "cid" || _word == "cloud" || _word == "sora" || _word == "riku"
+	{
+		"\0\s[0]\i[10]\i[20]\1\s[-1]\![sound,play,sfx\moomba-nya1.wav,--volume=%(volume)]Nyaa!\0\w8\w8\w8\w8\i[11]\w8\w4\s[0]"
+		--
+		"\w8\w8\0\f[color,disable](Guess he knows him, too.)"
+	}
+	elseif _word == "quistis"
+	{
+		"\1\s[-1]..."
+		--
+		"\w8\w8\0\f[color,disable](...Huh.)"
+	}
+	else
+	{
+		"\w8\w8\0\f[color,disable](...I guess he didn't understand.)"
+		"\w8\w8\0\f[color,disable](...Can't you say anything else?)"
+		"\w8\w8\0\f[color,disable](...Whatever.)"
+		"\w8\w8\0\f[color,disable](...Well, excuse me.)"
+		"\w8\w8\0\f[color,disable](...What am I doing?)"
+	}
+}

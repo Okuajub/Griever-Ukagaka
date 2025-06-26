@@ -1,0 +1,2 @@
+shell/master/profile/,nonar,noupdate
+ghost/master/profile/,nonar,noupdate

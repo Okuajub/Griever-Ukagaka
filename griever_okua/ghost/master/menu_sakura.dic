@@ -1,0 +1,99 @@
+SakuraMenuGreetings : nonoverlap
+{
+	"\![sound,play,sfx\moomba-short1.wav,--volume=%(volume)]Mmerr!"
+	"\![sound,play,sfx\moomba-short2.wav,--volume=%(volume)]Mee!"
+	"\![sound,play,sfx\moomba-short3.wav,--volume=%(volume)]Mhww."
+}
+
+SquallMenuClose : nonoverlap
+{
+	"...Whatever."
+	"Sorry\, nevermind."
+	"Nevermind."
+}
+
+//Because there is an all modifier here, you don't need to write -- between menu options
+OnSakuraMenu : all
+{
+	"\1\s[-1]"
+	if SHIORI3FW.Eventid == "OnMouseDoubleClick"; SakuraMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
+
+	"\0\s[0]\b[2]\*\t\![set,autoscroll,disable]"
+
+	"\_q"
+	
+	"\![*]\q[(Can you say something?),OnAiTalk]\n"
+	switch LastTalk == "" //Uses top option if there is a dialogue to repeat
+	{
+		"\![*]\q[(Can you do that again?),OnLastTalk]"
+		"\![*]\f[color,disable](Can you do that again?)\f[color,default]"
+	}
+	"\n"
+	"\![*]\q[(Can I teach you something?),script:\![open,inputbox,OnTeachMoomba,--timeout=0\]]"
+	"\n\n"
+
+	"\f[color,disable](...Options.\n"
+	"\![*]\q[Change his talk rate?,OnTalkRateMenu]\n"
+	"\![*]\q[Change his volume?,OnVolumeMenu]"
+	"...)\f[color,default]\n\n"
+	"\![*]\q[(%(SquallMenuClose)),blank]"
+}
+
+OnLastTalk
+{
+	LastTalk
+}
+
+OnTalkRateMenu : all
+{	
+	//This is just setting up a label, you may need to add to it or tweak it if you change what rates are available
+	_talkrate = "Off"
+	if aitalkinterval == 30; _talkrate = "30 seconds"
+	elseif aitalkinterval == 60; _talkrate = "1 minute"
+	elseif aitalkinterval == 180; _talkrate = "3 minutes"
+	elseif aitalkinterval == 300; _talkrate = "5 minutes"
+	elseif aitalkinterval == 600; _talkrate = "10 minutes"
+	
+	"\0\s[0]\b[2]\f[color,disable](...I can make him talk less.)\f[color,default]\n\n"
+	"\![set,autoscroll,disable]\_q"
+	"Current interval: %(_talkrate)\n\n"
+	
+	"\![*]\q[Off,OnTalkRateChange,0]\n"
+	"\![*]\q[30 seconds,OnTalkRateChange,30]\n"
+	"\![*]\q[1 minute,OnTalkRateChange,60]\n"
+	"\![*]\q[3 minutes,OnTalkRateChange,180]\n"
+	"\![*]\q[5 minutes,OnTalkRateChange,300]\n"
+	"\![*]\q[10 minutes,OnTalkRateChange,600]\n"
+	"\n"
+	"\![*]\q[Back,OnSakuraMenu]"
+}
+
+OnTalkRateChange
+{
+	aitalkinterval = TOINT(reference0)
+}
+
+OnVolumeMenu : all
+{
+	"\0\s[0]\b[2]\f[color,disable](...I can make him quieter.)\f[color,default]\n\n"
+
+	"Current Volume: "
+	if volume == 0; "Off" 
+	else; "%(volume)"
+	"\n\n"
+	"\![*]\q[Off,OnSetVolume,0]\n"
+	"\![*]\q[10,OnSetVolume,10]\n"
+	"\![*]\q[25,OnSetVolume,25]\n"
+	"\![*]\q[50,OnSetVolume,50]\n"
+	"\![*]\q[75,OnSetVolume,75]\n"
+	"\![*]\q[100,OnSetVolume,100]\n"
+	//"\![*]\q[Custom,OnCustomVolume]\n"
+	"\n"
+	"\![*]\q[Back,OnSakuraMenu]"
+}
+
+OnSetVolume
+{
+	volume = reference0
+	"\f[color,disable](Volume set to %(reference0).)\1\s[-1]\![sound,play,sfx\moomba-nya1.wav,--volume=%(volume)]Nyraa!"
+}

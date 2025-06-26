@@ -1,0 +1,17 @@
+charset,UTF-8
+
+name,Griever!
+type,ghost
+
+shiori,yaya.dll
+
+craftman,okuajub
+craftmanw,okuajub
+craftmanurl,https://okuajub-netspace.neocities.org
+
+sakura.name,Griever
+kero.name,Squall
+
+icon,icon.ico
+
+sstp.allowunspecifiedsend,0

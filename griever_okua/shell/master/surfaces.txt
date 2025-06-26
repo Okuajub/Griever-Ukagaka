@@ -1,0 +1,64 @@
+descript
+{
+	version,1
+}
+
+//—————————————————————————————— Sakura surfaces ——————————————————————————————
+
+surface0
+{
+	collision0,109,19,244,101,head
+	
+	//Example code for blink animation - uncomment if you want it
+	animation0.interval,random,4
+	animation0.pattern0,overlay,101,0,0,0
+	animation0.pattern1,overlay,102,100,0,0
+	animation0.pattern2,overlay,-1,50,0,0
+	
+	
+	//Example code for a talk animation - uncomment if you want it
+	// animation1.interval,talk,4
+	// animation1.pattern0,alternativestart,(2,3,4)
+	
+	// animation2.interval,never
+	// animation2.pattern0,overlay,103,0,0,0
+	// animation2.pattern1,overlay,104,200,0,0
+	// animation2.pattern2,overlay,-1,200,0,0
+	
+	// animation3.interval,never
+	// animation3.pattern0,overlay,103,0,0,0
+	// animation3.pattern1,overlay,-1,200,0,0
+	
+	// animation4.interval,never
+	// animation4.pattern0,overlay,104,0,0,0
+	// animation4.pattern1,overlay,105,200,0,0
+	// animation4.pattern2,overlay,-1,200,0,0
+
+
+	// Arm raise
+	animation10.interval,never
+	animation10.pattern0,replace,0,0,0,0
+	animation10.pattern1,replace,1,50,0,0
+	animation10.pattern2,replace,2,50,0,0
+
+	// Arm lower
+	animation11.interval,never
+	animation11.pattern0,replace,2,0,0,0
+	animation11.pattern1,replace,1,50,0,0
+	animation11.pattern2,replace,0,50,0,0
+
+	// Happy eyes
+	animation20.interval,never
+	animation20.pattern0,overlay,103,0,0,0
+
+}
+
+surface1-2
+{
+}
+
+//—————————————————————————————— Kero surfaces ——————————————————————————————
+
+surface10
+{
+}
